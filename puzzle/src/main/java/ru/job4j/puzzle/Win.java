@@ -20,7 +20,6 @@ public class Win {
         return extract;
     }
 
-
     public static boolean isMonoHorizontal(int[][] board, int row) {
         boolean result = true;
         for (int i = 0; i < board[row].length; i++) {
@@ -42,5 +41,4 @@ public class Win {
         }
         return result;
     }
-
 }
