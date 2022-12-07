@@ -5,19 +5,12 @@ public class Win {
     public static boolean check(int[][] board) {
         boolean rst = false;
         for (int i = 0; i < board.length; i++) {
-            if (extractFromDiagonal(board)[i] == 1) {
-                rst = isMonoHorizontal(board, i) || isMonoVertical(board, i);
+            if (board[i][i] == 1 && (isMonoHorizontal(board, i) || isMonoVertical(board, i))) {
+                rst = true;
+                break;
             }
         }
         return rst;
-    }
-
-    public static int[] extractFromDiagonal(int[][] board) {
-        int[] extract = new int[board.length];
-        for (int i = 0; i < board.length; i++) {
-            extract[i] = board[i][i];
-        }
-        return extract;
     }
 
     public static boolean isMonoHorizontal(int[][] board, int row) {

@@ -35,7 +35,7 @@ public class WinTest {
                 {0, 1, 0, 0, 1},
                 {0, 1, 0, 0, 1},
                 {1, 1, 1, 1, 0},
-                {1, 1, 1, 1, 1},
+                {1, 1, 1, 0, 1},
                 {0, 0, 0, 0, 1},
         };
         assertThat(Win.check(board)).isFalse();
@@ -51,19 +51,5 @@ public class WinTest {
                 {1, 1, 1, 1, 0},
         };
         assertThat(Win.check(board)).isFalse();
-    }
-
-    @Test
-    public void whenExtractFromDiagonalMix() {
-        int[][] input = {
-                {1, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0},
-                {1, 1, 1, 1, 1},
-                {0, 0, 0, 0, 0},
-                {0, 1, 1, 1, 1},
-        };
-        int[] result = Win.extractFromDiagonal(input);
-        int[] expected = {1, 0, 1, 0, 1};
-        assertThat(result).containsExactly(expected);
     }
 }
