@@ -1,10 +1,9 @@
 package ru.job4j.puzzle;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.*;
 
-@Disabled("Тесты отключены. Удалить аннотацию после реализации метода check()")
 public class WinTest {
     @Test
     public void whenVerticalWin() {
@@ -21,11 +20,11 @@ public class WinTest {
     @Test
     public void whenHorizontalWin() {
         int[][] board = {
-                {0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0},
+                {0, 1, 0, 1, 0},
+                {0, 1, 1, 1, 1},
+                {1, 1, 1, 1, 0},
+                {1, 0, 1, 0, 1},
                 {1, 1, 1, 1, 1},
-                {0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0},
         };
         assertThat(Win.check(board)).isTrue();
     }
@@ -33,11 +32,11 @@ public class WinTest {
     @Test
     public void whenNotWin() {
         int[][] board = {
-                {0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0},
+                {0, 1, 0, 0, 1},
+                {0, 1, 0, 0, 1},
                 {1, 1, 1, 1, 0},
-                {0, 0, 0, 1, 0},
-                {0, 0, 0, 0, 0},
+                {1, 1, 1, 1, 1},
+                {0, 0, 0, 0, 1},
         };
         assertThat(Win.check(board)).isFalse();
     }
@@ -52,5 +51,19 @@ public class WinTest {
                 {1, 1, 1, 1, 0},
         };
         assertThat(Win.check(board)).isFalse();
+    }
+
+    @Test
+    public void whenExtractFromDiagonalMix() {
+        int[][] input = {
+                {1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {1, 1, 1, 1, 1},
+                {0, 0, 0, 0, 0},
+                {0, 1, 1, 1, 1},
+        };
+        int[] result = Win.extractFromDiagonal(input);
+        int[] expected = {1, 0, 1, 0, 1};
+        assertThat(result).containsExactly(expected);
     }
 }
